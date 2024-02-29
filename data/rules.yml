@@ -1,0 +1,29 @@
+version: "3.1"
+
+rules:
+
+- rule: Ask the user to rephrase whenever they send a message with low NLU confidence
+  steps:
+  - intent: nlu_fallback
+  - action: utter_please_rephrase
+
+- rule: Say thanks anytime the user says thanks
+  steps:
+  - intent: thankyou_hehe
+  - action: utter_thanks
+
+
+- rule: Get info sender id
+  steps:
+  - intent: get_sender_id
+  - action: action_get_sender_id
+
+# - rule: Say goodbye anytime the user says goodbye
+#   steps:
+#   - intent: goodbye
+#   - action: utter_goodbye
+
+# - rule: Say 'I am a bot' anytime the user challenges
+#   steps:
+#   - intent: bot_challenge
+#   - action: utter_iamabot

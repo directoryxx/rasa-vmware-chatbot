@@ -1,0 +1,83 @@
+version: "3.1"
+
+intents:
+  - greet
+  # - goodbye
+  - affirm
+  # - bot_challenge
+  - takesnapshot
+  # - checkresource
+  - reject
+  - hostname_search
+  - takesnapshot_direct
+  - thankyou_hehe
+  # - checkresource_direct
+  - get_sender_id
+  - get_host
+  - get_host_direct
+
+entities:
+  - vm_name
+
+slots:
+  vm_name:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: vm_name
+
+forms:
+  snapshot_form:
+    required_slots:
+        - vm_name
+  # checkresource_form:
+  #   required_slots:
+  #       - vm_name
+
+actions:
+  - action_hostname_confirmation
+  - action_snapshot_create
+  # - action_get_resource
+  - action_get_sender_id
+  - action_get_host_info
+
+responses:
+  utter_greet:
+  - text: "Hai, saya bot. Kemampuan saya terbatas pada mengambil snapshot dan informasi host vm."
+
+  # utter_goodbye:
+  # - text: "Bye."
+
+  utter_checkserver:
+  - text: "Hostname server nya apaaa? (Kalau bisa hostname aja ya biar gak bingung hehe)"
+
+  utter_reject_vm:
+  - text: "Hmmm, kalau belum sesuai bisa ke yang bikin bot ini yaa"
+
+  utter_checkserver_confirm:
+  - text: "Kita cari dulu ya VM {vm_name}"
+
+  utter_act_confirm:
+  - text: "Ini VM nya mau di snapshot atau informasi host vm ku?"
+
+  utter_inform_snapshot:
+  - text: "Kita snapshot dulu ya VM {vm_name}"
+
+  utter_inform_get_host:
+  - text: "Kita cari dulu VM {vm_name}"
+
+  # utter_inform_snapshot_take_time:
+  # - text: "Kalau sampai 30 menit belum ada respon suruh admin nya ngecek deh"
+
+  # utter_iamabot:
+  # - text: "I am a bot, powered by Rasa."
+
+  utter_please_rephrase:
+  - text: "Sorry, aku gak paham. Boleh minta info ke admin nya?"
+
+  utter_thanks:
+  - text: "Dengan senang hati"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

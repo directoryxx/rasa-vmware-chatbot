@@ -1,0 +1,150 @@
+version: "3.1"
+
+nlu:
+- regex: vm_name
+  examples: |
+    - ^[A-Z]+-[A-Z]+[0-9]{2}$
+
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - halo
+    - start
+    - oi
+    - oy
+
+# - intent: utter_greet
+#   examples: |
+#     - Hai, saya bot. Kemampuan saya terbatas pada mengambil snapshot dan memeriksa sumber daya.
+#     - Hai, saya bot yang hanya dapat melakukan pengambilan snapshot dan pemeriksaan sumber daya.
+#     - Halo, saya bot yang hanya mampu mengambil snapshot dan memeriksa sumber daya.
+#     - Hai, aku bot. Keterbatasanku hanya pada pengambilan snapshot dan pemeriksaan sumber daya.
+
+- intent: takesnapshot
+  examples: |
+    - aku mau ambil snapshot
+    - ambilin snapshot dong
+    - ambil snapshot sekaran
+    - bisa snapshot?
+    - Buat snapshot dari sistem sekarang
+    - Mohon segera buat snapshot 
+    - Buat snapshot sekarang juga, tolong.
+    - Segera buatkan saya snapshot 
+    - mau snapshot dong
+
+
+- intent: get_host
+  examples: |
+    - bisa informasikan host vm ku?
+    - vm ku ada di host apa ya?
+    - host vm ku apa?
+    - vm ku host mana?
+    - infomasi host vm ku
+    - host vm ku
+    - informasi host vm
+
+
+- intent: get_host_direct
+  examples: |
+    - informasi host server [AGA-VM1](vm_name)
+    - informasi host [AGA-VM1](vm_name)
+    - vm [AGA-VM1](vm_name) di host mana ya?
+    - server [AGA-VM1](vm_name) di host mana?
+    - VM [AGA-VM1](vm_name) info host nya
+
+- intent: get_sender_id
+  examples: |
+    - sender id ku berapaa
+    - id sender
+    - info sender id
+    - bisa tolong info sender id ku?
+
+
+- intent: takesnapshot_direct
+  examples: |
+    - snapshot server [AGA-VM1](vm_name)
+    - ambil snapshot [AGA-VM1](vm_name)
+    - tolong snapshot vm [AGA-VM1](vm_name)
+    - server [AGA-VM1](vm_name) tolong snapshot dong
+    - VM [AGA-VM1](vm_name) ambil snapshot sekarang
+    - mau snapshot [AGA-VM1](vm_name)
+    - mau snapshot [AGA-VM1](vm_name) dong
+
+
+- intent: thankyou_hehe
+  examples: |
+    - terima kasih
+    - thank you
+    - trims yaa
+    - thanks
+    - thx
+
+# - intent: checkresource
+#   examples: |
+#     - Info cpu & memory sekarang
+#     - cpu memory server ku sekarang berapa?
+#     - check cpu & memory dong
+#     - cpu & memory
+#     - penggunaan cpu & memory
+#     - info cpu & memory dong
+#     - info cpu & memory
+
+
+# - intent: checkresource_direct
+#   examples: |
+#     - info cpu & memory sekarang [AGA-VM1](vm_name)
+#     - cpu memory server [AGA-VM1](vm_name) sekarang
+#     - check cpu & memory [AGA-VM1](vm_name)
+
+- intent: hostname_search
+  examples: |
+    - hostnamenya [AGA-VM1](vm_name)
+    - server nya [AGA-VM1](vm_name)
+    - server ku [AGA-VM1](vm_name)
+    - server nya adalah [AGA-VM1](vm_name)
+    - bisa cek [AGA-VM1](vm_name)
+    - [AGA-VM1](vm_name)
+    - [AGA-VM2](vm_name)
+    - [AGA-VM3](vm_name)
+    - [AGA-VM4](vm_name)
+    - [AGA-VM5](vm_name)
+    - [AGA-VM6](vm_name)
+    - [AXS-VM1](vm_name)
+    - [AXS-VM2](vm_name)
+    - [AXS-VM2](vm_name)
+    - [AGA-VM1](vm_name) yaaa
+    - server [AGA-VM1](vm_name) yaaa
+
+- intent: affirm
+  examples: |
+    - iya
+    - y
+    - bisaa
+    - betul
+    - gazz
+    - gasss
+    - gas
+
+- intent: reject
+  examples: |
+    - tidak
+    - gak
+    - g
+    - gak bisa
+    - tdk
+    - gk
+    - eh bukan
+    - bukan yang ini
+
+# - intent: bot_challenge
+#   examples: |
+#     - are you a bot?
+#     - are you a human?
+#     - am I talking to a bot?
+#     - am I talking to a human?
+#     - kamu bot bukan?
+#     - kamu orang?
+#     - aku ngomong sama bot?
+#     - aku ngomong sama orang gak?

@@ -1,0 +1,56 @@
+services:
+  rasa-server:
+    image: rasa-vm
+    volumes:
+      - ./:/app
+      # - ./supervisord.conf:/etc/supervisord.conf
+    ports:
+      - "127.0.0.1:5005:5005"
+      # - "127.0.0.1:5055:5055"
+    command:
+      - run
+    networks:
+      - dev 
+
+
+  rasa-actions:
+    image: rasa-vm
+    volumes:
+      - ./:/app
+    environment:
+      - VMWARE_HOST=blabla.org
+      - VMWARE_USER=username@blabla.org
+      - VMWARE_PASS=passwordblabla
+    command:
+      - run
+      - actions
+      # - ./supervisord.conf:/etc/supervisord.conf
+    # ports:
+      # - "5005:5005"
+      # - "127.0.0.1:5055:5055"
+    networks:
+      - dev 
+
+  # postgres_db:
+  #   image: postgres:latest
+  #   container_name: postgresdb 
+  #   restart: always
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=postgres123
+  #     - POSTGRES_DB=rasa
+  #   ports:
+  #     - '5432:5432'
+  #   volumes:
+  #     - postgres_db:/var/lib/postgresql/data
+  #   networks:
+  #     - rasa
+
+
+networks:
+  dev:
+    external: true
+
+# volumes:
+#   postgres_db:
+#     driver: local

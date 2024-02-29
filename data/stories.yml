@@ -1,0 +1,362 @@
+version: "3.1"
+
+stories:
+
+- story: get_host_info_reject
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: get_host
+  - action: utter_checkserver
+  - intent: hostname_search
+    entities:
+    - vm_name: AGA-VM1
+  - slot_was_set:
+    - vm_name: AGA-VM1
+  - action: utter_checkserver_confirm
+  - action: action_hostname_confirmation
+  - intent: reject
+  - action: utter_reject_vm
+
+
+- story: get_host_info_middle2_reject
+  steps:
+  - intent: get_host
+  - action: utter_checkserver
+  - intent: hostname_search
+    entities:
+    - vm_name: AGA-VM1
+  - slot_was_set:
+    - vm_name: AGA-VM1
+  - action: utter_checkserver_confirm
+  - action: action_hostname_confirmation
+  - intent: reject
+  - action: utter_reject_vm
+
+- story: get_host_info_middle_reject
+  steps:
+  - intent: hostname_search
+    entities:
+    - vm_name: AGA-VM1
+  - slot_was_set:
+    - vm_name: AGA-VM1
+  - action: utter_checkserver_confirm
+  - action: utter_act_confirm
+  - intent: get_host
+  - action: action_hostname_confirmation
+  - intent: reject
+  - action: utter_reject_vm
+
+- story: get_host_info_direct_reject
+  steps:
+  - intent: get_host_direct
+    entities:
+    - vm_name: AGA-VM1
+  - slot_was_set:
+    - vm_name: AGA-VM1
+  - action: action_hostname_confirmation
+  - intent: reject
+  - action: utter_reject_vm
+
+- story: get_host_info_affirm
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: get_host
+  - action: utter_checkserver
+  - intent: hostname_search
+    entities:
+    - vm_name: AGA-VM1
+  - slot_was_set:
+    - vm_name: AGA-VM1
+  - action: utter_checkserver_confirm
+  - action: action_hostname_confirmation
+  - intent: affirm
+  - action: utter_inform_get_host
+  # - action: utter_inform_snapshot_take_time
+  - action: action_get_host_info
+
+- story: get_host_info_middle2_affirm
+  steps:
+  - intent: get_host
+  - action: utter_checkserver
+  - intent: hostname_search
+    entities:
+    - vm_name: AGA-VM1
+  - slot_was_set:
+    - vm_name: AGA-VM1
+  - action: utter_checkserver_confirm
+  - action: action_hostname_confirmation
+  - intent: affirm
+  - action: utter_inform_get_host
+  # - action: utter_inform_snapshot_take_time
+  - action: action_get_host_info
+
+- story: get_host_info_middle_affirm
+  steps:
+  - intent: hostname_search
+    entities:
+    - vm_name: AGA-VM1
+  - slot_was_set:
+    - vm_name: AGA-VM1
+  - action: utter_checkserver_confirm
+  - action: utter_act_confirm
+  - intent: get_host
+  - action: action_hostname_confirmation
+  - intent: affirm
+  - action: utter_inform_get_host
+  # - action: utter_inform_snapshot_take_time
+  - action: action_get_host_info
+
+- story: get_host_info_direct_affirm
+  steps:
+  - intent: get_host_direct
+    entities:
+    - vm_name: AGA-VM1
+  - slot_was_set:
+    - vm_name: AGA-VM1
+  - action: action_hostname_confirmation
+  - intent: affirm
+  - action: utter_inform_get_host
+  # - action: utter_inform_snapshot_take_time
+  - action: action_get_host_info
+
+
+# Awal
+- story: ambilsnapshot_reject
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: takesnapshot
+  - action: utter_checkserver
+  - intent: hostname_search
+    entities:
+    - vm_name: AGA-VM1
+  - slot_was_set:
+    - vm_name: AGA-VM1
+  - action: utter_checkserver_confirm
+  - action: action_hostname_confirmation
+  - intent: reject
+  - action: utter_reject_vm
+
+- story: ambilsnapshot_middle_reject
+  steps:
+  - intent: hostname_search
+    entities:
+    - vm_name: AGA-VM1
+  - slot_was_set:
+    - vm_name: AGA-VM1
+  - action: utter_checkserver_confirm
+  - action: utter_act_confirm
+  - intent: takesnapshot
+  - action: action_hostname_confirmation
+  - intent: reject
+  - action: utter_reject_vm
+
+- story: ambilsnapshot_direct_reject
+  steps:
+  - intent: takesnapshot_direct
+    entities:
+    - vm_name: AGA-VM1
+  - slot_was_set:
+    - vm_name: AGA-VM1
+  - action: action_hostname_confirmation
+  - intent: reject
+  - action: utter_reject_vm
+
+- story: ambilsnapshot_affirm
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: takesnapshot
+  - action: utter_checkserver
+  - intent: hostname_search
+    entities:
+    - vm_name: AGA-VM1
+  - slot_was_set:
+    - vm_name: AGA-VM1
+  - action: utter_checkserver_confirm
+  - action: action_hostname_confirmation
+  - intent: affirm
+  - action: utter_inform_snapshot
+  # - action: utter_inform_snapshot_take_time
+  - action: action_snapshot_create
+
+- story: ambilsnapshot_middle_affirm
+  steps:
+  - intent: hostname_search
+    entities:
+    - vm_name: AGA-VM1
+  - slot_was_set:
+    - vm_name: AGA-VM1
+  - action: utter_checkserver_confirm
+  - action: utter_act_confirm
+  - intent: takesnapshot
+  - action: action_hostname_confirmation
+  - intent: affirm
+  - action: utter_inform_snapshot
+  # - action: utter_inform_snapshot_take_time
+  - action: action_snapshot_create
+
+- story: ambilsnapshot_direct_affirm
+  steps:
+  - intent: takesnapshot_direct
+    entities:
+    - vm_name: AGA-VM1
+  - slot_was_set:
+    - vm_name: AGA-VM1
+  - action: action_hostname_confirmation
+  - intent: affirm
+  - action: utter_inform_snapshot
+  # - action: utter_inform_snapshot_take_time
+  - action: action_snapshot_create
+
+
+# - story: cekresource
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: checkresource
+#   - action: utter_checkserver
+#   - intent: hostname_search
+#     entities:
+#     - vm_name: AGA-VM1
+#   - slot_was_set:
+#     - vm_name: AGA-VM1
+#   - action: utter_checkserver_confirm
+#   - action: action_hostname_confirmation
+#   - intent: affirm
+#   - action: action_get_resource
+
+# - story: cekresource_reject
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: checkresource
+#   - action: utter_checkserver
+#   - intent: hostname_search
+#     entities:
+#     - vm_name: AGA-VM1
+#   - slot_was_set:
+#     - vm_name: AGA-VM1
+#   - action: utter_checkserver_confirm
+#   - action: action_hostname_confirmation
+#   - intent: reject
+#   - action: utter_reject_vm
+
+
+# - story: cekresource_middle
+#   steps:
+#   - intent: hostname_search
+#     entities:
+#     - vm_name: AGA-VM1
+#   - slot_was_set:
+#     - vm_name: AGA-VM1
+#   - action: utter_checkserver_confirm
+#   - action: utter_act_confirm
+#   - intent: checkresource
+#   - action: action_hostname_confirmation
+#   - intent: affirm
+#   - action: action_get_resource
+
+# - story: cekresource_middle_reject
+#   steps:
+#   - intent: hostname_search
+#     entities:
+#     - vm_name: AGA-VM1
+#   - slot_was_set:
+#     - vm_name: AGA-VM1
+#   - action: utter_checkserver_confirm
+#   - action: utter_act_confirm
+#   - intent: checkresource
+#   - action: action_hostname_confirmation
+#   - intent: reject
+#   - action: utter_reject_vm
+
+# - story: cekresource_direct
+#   steps:
+#   - intent: checkresource_direct
+#     entities:
+#     - vm_name: AGA-VM1
+#   - slot_was_set:
+#     - vm_name: AGA-VM1
+#   - action: utter_checkserver_confirm
+#   - action: action_hostname_confirmation
+#   - intent: affirm
+#   - action: action_get_resource
+
+# - story: cekresource_direct_reject
+#   steps:
+#   - intent: checkresource_direct
+#     entities:
+#     - vm_name: AGA-VM1
+#   - slot_was_set:
+#     - vm_name: AGA-VM1
+#   - action: utter_checkserver_confirm
+#   - action: action_hostname_confirmation
+#   - intent: reject
+#   - action: utter_reject_vm
+
+
+# - story: cekresource_direct2
+#   steps:
+#   - intent: checkresource
+#   - action: utter_checkserver
+#   - intent: hostname_search
+#     entities:
+#     - vm_name: AGA-VM1
+#   - slot_was_set:
+#     - vm_name: AGA-VM1
+#   - action: utter_checkserver_confirm
+#   - action: action_hostname_confirmation
+#   - intent: affirm
+#   - action: action_get_resource
+
+# - story: cekresource_direct_reject2
+#   steps:
+#   - intent: checkresource
+#   - action: utter_checkserver
+#   - intent: hostname_search
+#     entities:
+#     - vm_name: AGA-VM1
+#   - slot_was_set:
+#     - vm_name: AGA-VM1
+#   - action: utter_checkserver_confirm
+#   - action: action_hostname_confirmation
+#   - intent: reject
+#   - action: utter_reject_vm
+
+
+- story: ambilsnapshot_direct2
+  steps:
+  - intent: takesnapshot
+  - action: utter_checkserver
+  - intent: hostname_search
+    entities:
+    - vm_name: AGA-VM1
+  - slot_was_set:
+    - vm_name: AGA-VM1
+  - action: utter_checkserver_confirm
+  - action: action_hostname_confirmation
+  - intent: affirm
+  - action: action_snapshot_create
+
+- story: ambilsnapshot_direct_reject2
+  steps:
+  - intent: takesnapshot
+  - action: utter_checkserver
+  - intent: hostname_search
+    entities:
+    - vm_name: AGA-VM1
+  - slot_was_set:
+    - vm_name: AGA-VM1
+  - action: utter_checkserver_confirm
+  - action: action_hostname_confirmation
+  - intent: reject
+  - action: utter_reject_vm
+
+
+- story: sender_id_stories
+  steps:
+  - intent: get_sender_id
+  - action: action_get_sender_id
